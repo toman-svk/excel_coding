@@ -11,20 +11,18 @@ def main():
         try:
             excel_path = uploaded_file.name
             ex = Excel_scripts(excel_path)
-            st.write(f'Uploaded file with name {excel_path}')
-            st.write(f'There are: {ex.get_sheet_count()} sheets.')
+
 
             ex.find_all_tables()
 
-            # excel_data = pd.read_excel(uploaded_file, sheet_name=None)
+            st.write(f'Uploaded file with name {excel_path}')
+            st.write(f'There are: {ex.get_sheet_count()} sheet(s).')
+            st.write(f'There are: {len(ex.table_dict.keys())} table(s).')
 
-            # # Display sheet names
-            # sheet_names = list(excel_data.keys())
-            # selected_sheet = st.selectbox("Select Sheet", sheet_names)
+            for key, values in ex.table_dict.items():
+                st.text_input("", f"{key}")
+                st.write(values[0])
 
-            # # Display data from the selected sheet
-            # st.write(f"Showing data from sheet '{selected_sheet}':")
-            # st.dataframe(excel_data[selected_sheet])
         
         except Exception as e:
             st.error(f"Error: {e}")
