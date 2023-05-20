@@ -3,10 +3,10 @@ import git
 from datetime import datetime
 
 # Specify the project folder path
-project_folder = 'B:\Programming\excel_coding'
+script_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Initialize a Git repository object
-repo = git.Repo(project_folder)
+repo = git.Repo(script_directory)
 
 # Add all changes to the staging area
 repo.git.add('--all')
